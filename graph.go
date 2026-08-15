@@ -126,6 +126,7 @@ func (s *Service) Create(name string, dependsOn []string) (*Task, error) {
 }
 
 func (s *Service) Get(name string) (*Task, error) {
+	name = trimName(name)
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	t, ok := s.tasks[name]
